@@ -1,0 +1,57 @@
+package com.example.deneme_squre_progress;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+
+import java.util.Random;
+
+import ch.halcyon.squareprogressbar.SquareProgressBar;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    
+    int sayi;
+    SquareProgressBar squareProgressBar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+         squareProgressBar = findViewById(R.id.sprogressbar);
+        squareProgressBar.setImage(R.drawable.holyroodpark);
+        squareProgressBar.setRoundedCorners(true,20);
+        squareProgressBar.showProgress(true);
+        squareProgressBar.setOpacity(true);
+
+
+        start();
+
+
+    }
+
+    public void start() {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sayi += 1;
+
+                squareProgressBar.setProgress(sayi);
+
+                if (sayi < 100) {
+                    handler.postDelayed(this, 1000);
+                }
+            }
+        }, 1000);
+    }
+
+
+
+    }
+
+
